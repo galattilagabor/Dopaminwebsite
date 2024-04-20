@@ -57,9 +57,15 @@
     <Compile Include="Raktar.Designer.cs">
       <DependentUpon>Raktar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Termek.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiSample.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Raktar.resx">
+      <DependentUpon>Raktar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
