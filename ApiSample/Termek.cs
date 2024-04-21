@@ -12,13 +12,13 @@ namespace ApiSample
         public string InventoryID;
         public string SKU;
         public string Nev;
-        public double Ar;
+        public decimal Ar;
         public int Mennyiseg;
         public string Leiras;
         public string Tipus;
         public double Magassag;
         public double Szelesseg;
-        public double Hossz;
+        public double Hosszusag;
         public double Suly;
         public string Gyarto;
         public string Elado;
@@ -26,6 +26,6 @@ namespace ApiSample
         public bool NemSzallithato;
         public bool KulonSzallihato;
         public double SzallitasiAr;
-        public bool Velemenyek;
+        public bool? Velemenyek;
     }
 }

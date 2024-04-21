@@ -1,4 +1,6 @@
 ﻿using ApiSample;
+using Hotcakes.CommerceDTO.v1;
+using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Proxies;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,9 +30,39 @@ namespace Kliensalkalmazas
         {
             InitializeComponent();
 
-            var snaps = proxy.ProductsFindAll();
+            ApiResponse<List<ProductDTO>> productsData = proxy.ProductsFindAll();
 
-            for (int i = 0; i < snaps.Content.Count; i++)
+            for (int i = 0; i < productsData.Content.Count; i++)
+            {
+                //var productInventory = proxy.ProductInventoryFindForProduct(productsData.Content[i].Bvin);
+                
+                Termek termek = new Termek();
+                termek.ID = i + 1;
+                termek.InventoryID = productsData.Content[i].Bvin;
+                termek.SKU = productsData.Content[i].Sku;
+                termek.Nev = productsData.Content[i].ProductName;
+                termek.Ar = productsData.Content[i].SitePrice;
+                termek.Mennyiseg = productsData.Content[i].MinimumQty;
+                termek.Leiras = productsData.Content[i].LongDescription;
+                //termek.Tipus = response.Content[i];
+                //termek.Magassag = response.Content[i].;
+                //termek.Szelesseg = response.Content[i];
+                //termek.Hosszusag = response.Content[i];
+                //termek.Suly = response.Content[i];
+                termek.Gyarto = productsData.Content[i].ManufacturerId;
+                termek.Elado = productsData.Content[i].VendorId;
+                termek.SzallitasiMod = productsData.Content[i].ShippingMode.ToString();
+                //termek.NemSzallithato = response.Content[i];
+                //termek.KulonSzallihato = response.Content[i];
+                //termek.SzallitasiAr = response.Content[i];
+                termek.Velemenyek = productsData.Content[i].AllowReviews;
+                
+                termeklista.Add(termek);
+            }
+
+            termekBindingSource.DataSource = termeklista;
+
+            /*for (int i = 0; i < snaps.Content.Count; i++)
             {
                 var prodinv = proxy.ProductInventoryFindForProduct(snaps.Content[i].Bvin);
                 listBox1.Items.Add(snaps.Content[i].ProductName);
@@ -39,32 +73,31 @@ namespace Kliensalkalmazas
                 termek.InventoryID = prodinv.Content[0].Bvin;
 
                 termeklista.Add(termek);
-            }
+            }*/
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        /*
+        private void Kereses()
         {
-            Szures();
-        }
+            ApiResponse<List<ProductDTO>> response = proxy.ProductsFindAll();
 
-        private void Szures()
-        {
+            var kereses = from x in proxy.ProductInventoryFindForProduct(response.Content[x].Bvin)
+                          where .Contains(textBox_kereses.Text)
+                          select x;
+
+            listBoxNyersanyagok.DataSource = hv.ToList();
+            listBoxNyersanyagok.DisplayMember = "NyersanyagNev";
+
             List<string> szures = new List<string>();
             for (int i = 0; i < termeklista.Count; i++)
             {
-                if (termeklista[i].Nev.StartsWith(textBox1.Text))
+                if (termeklista[i].Nev.StartsWith(textBox_kereses.Text))
                 {
                     szures.Add(termeklista[i].Nev);
                 }
             }
 
             listBox1.DataSource = szures;
-        }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            int index = ((ListBox)sender).SelectedIndex + 1;
-            textBox_mennyiseg.Text = (termeklista[index].Mennyiseg).ToString();
         }
 
         private void button_plus_Click_1(object sender, EventArgs e)
@@ -89,5 +122,6 @@ namespace Kliensalkalmazas
             inv.QuantityOnHand = int.Parse(textBox_mennyiseg.Text);
             var response = proxy.ProductInventoryUpdate(inv);
         }
+        */
     }
 }
