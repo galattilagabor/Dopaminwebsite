@@ -36,7 +36,7 @@ namespace Kliensalkalmazas
             {                
                 Termek termek = new Termek();
                 termek.ID = i + 1;
-                termek.InventoryID = productsData.Content[i].Bvin;
+                termek.Bvin = productsData.Content[i].Bvin;
                 termek.SKU = productsData.Content[i].Sku;
                 termek.Nev = productsData.Content[i].ProductName;
                 termek.Ar = productsData.Content[i].SitePrice;
@@ -58,68 +58,7 @@ namespace Kliensalkalmazas
                 termeklista.Add(termek);
             }
 
-            dataGridView_raktar.DataSource = termeklista;
-
-            /*for (int i = 0; i < snaps.Content.Count; i++)
-            {
-                var prodinv = proxy.ProductInventoryFindForProduct(snaps.Content[i].Bvin);
-                listBox1.Items.Add(snaps.Content[i].ProductName);
-                Termek termek = new Termek();
-                termek.ID = i + 1;
-                termek.Nev = snaps.Content[i].ProductName;
-                termek.Mennyiseg = prodinv.Content[0].QuantityOnHand;
-                termek.InventoryID = prodinv.Content[0].Bvin;
-
-                termeklista.Add(termek);
-            }*/
+            termekBindingSource.DataSource = termeklista;
         }
-
-        /*
-        private void Kereses()
-        {
-            ApiResponse<List<ProductDTO>> response = proxy.ProductsFindAll();
-
-            var kereses = from x in proxy.ProductInventoryFindForProduct(response.Content[x].Bvin)
-                          where .Contains(textBox_kereses.Text)
-                          select x;
-
-            listBoxNyersanyagok.DataSource = hv.ToList();
-            listBoxNyersanyagok.DisplayMember = "NyersanyagNev";
-
-            List<string> szures = new List<string>();
-            for (int i = 0; i < termeklista.Count; i++)
-            {
-                if (termeklista[i].Nev.StartsWith(textBox_kereses.Text))
-                {
-                    szures.Add(termeklista[i].Nev);
-                }
-            }
-
-            listBox1.DataSource = szures;
-        }
-
-        private void button_plus_Click_1(object sender, EventArgs e)
-        {
-            var z = int.Parse(textBox_mennyiseg.Text);
-            z = z + 1;
-            textBox_mennyiseg.Text = z.ToString();
-        }
-
-        private void button_minus_Click_1(object sender, EventArgs e)
-        {
-            var z = int.Parse(textBox_mennyiseg.Text);
-            z = z - 1;
-            textBox_mennyiseg.Text = z.ToString();
-        }
-
-        private void button_save_Click_1(object sender, EventArgs e)
-        {
-            var index = listBox1.SelectedIndex + 1;
-            var curproduct = termeklista[index];
-            var inv = proxy.ProductInventoryFind(curproduct.InventoryID).Content;
-            inv.QuantityOnHand = int.Parse(textBox_mennyiseg.Text);
-            var response = proxy.ProductInventoryUpdate(inv);
-        }
-        */
     }
 }
