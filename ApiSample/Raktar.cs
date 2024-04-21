@@ -60,5 +60,15 @@ namespace Kliensalkalmazas
 
             termekBindingSource.DataSource = termeklista;
         }
+
+        private void textBox_kereses_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox_kereses.Text.ToLower();
+
+            var filteredList = termeklista
+                .Where(x => x.Nev.ToLower().Contains(search)).ToList();
+
+            termekBindingSource.DataSource = filteredList;
+        }
     }
 }
