@@ -131,6 +131,7 @@
             this.button_save.TabIndex = 5;
             this.button_save.Text = "Mentés";
             this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // dataGridView_raktar
             // 
@@ -652,7 +653,6 @@
         private System.Windows.Forms.Button button_change;
         private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.DataGridView dataGridView_raktar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -689,7 +689,6 @@
         private System.Windows.Forms.TextBox textBox_kulonSzallithato;
         private System.Windows.Forms.TextBox textBox_szallitasiKoltseg;
         private System.Windows.Forms.TextBox textBox_velemenyek;
-        private System.Windows.Forms.BindingSource termekBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bvinDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sKUDataGridViewTextBoxColumn;
@@ -709,5 +708,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn kulonSzallihatoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn szallitasiArDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn velemenyekDataGridViewTextBoxColumn;
+        public System.Windows.Forms.DataGridView dataGridView_raktar;
+        private System.Windows.Forms.BindingSource termekBindingSource;
     }
 }

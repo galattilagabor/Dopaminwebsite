@@ -129,9 +129,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_plus;
         private System.Windows.Forms.Button button_minus;
-        private System.Windows.Forms.TextBox textBox_mennyiseg;
         private System.Windows.Forms.Button button_out;
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TextBox textBox_mennyiseg;
     }
 }

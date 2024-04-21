@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Proxies;
 using System.Text;
@@ -80,9 +81,27 @@ namespace Kliensalkalmazas
 
         private void button_change_Click(object sender, EventArgs e)
         {
-            Modositas modositas = new Modositas();
+            var currentProduct = (Termek)termekBindingSource.Current;
+            var Bvin = currentProduct.Bvin;
+            var updatedProduct = proxy.ProductsFind(Bvin).Content;
 
-            if (modositas.ShowDialog() != DialogResult.OK) return;
+            Modositas modositas = new Modositas();
+            modositas.textBox_mennyiseg.Text = (from x in termeklista
+                                                where x.Bvin == Bvin
+                                                select x.Mennyiseg).FirstOrDefault().ToString();
+
+            if (modositas.ShowDialog() == DialogResult.OK)
+            {
+                currentProduct.Mennyiseg = int.Parse(modositas.textBox_mennyiseg.Text);
+                updatedProduct.MinimumQty = int.Parse(modositas.textBox_mennyiseg.Text);
+                ApiResponse<ProductDTO> updateResponse = proxy.ProductsUpdate(updatedProduct);
+
+                termekBindingSource.ResetBindings(false);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void button_delete_Click(object sender, EventArgs e)
@@ -113,6 +132,12 @@ namespace Kliensalkalmazas
             {
                 MessageBox.Show("A törlés megszakítva.");
             }
+        }
+
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            // mentés hiányzik
+            MessageBox.Show("Sikeres mentés!");
         }
 
         private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
