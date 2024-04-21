@@ -30,10 +30,17 @@ namespace Kliensalkalmazas
         {
             InitializeComponent();
 
-            var productsData = proxy.ProductsFindAll();
+            ProductsInventory();
+
+            pictureBox1.Refresh();
+        }
+
+        private void ProductsInventory()
+        {
+            ApiResponse<List<ProductDTO>> productsData = proxy.ProductsFindAll();
 
             for (int i = 0; i < productsData.Content.Count; i++)
-            {                
+            {
                 Termek termek = new Termek();
                 termek.ID = i + 1;
                 termek.Bvin = productsData.Content[i].Bvin;
@@ -54,7 +61,7 @@ namespace Kliensalkalmazas
                 //termek.KulonSzallihato = response.Content[i];
                 //termek.SzallitasiAr = response.Content[i];
                 termek.Velemenyek = productsData.Content[i].AllowReviews;
-                
+
                 termeklista.Add(termek);
             }
 
@@ -69,6 +76,105 @@ namespace Kliensalkalmazas
                 .Where(x => x.Nev.ToLower().Contains(search)).ToList();
 
             termekBindingSource.DataSource = filteredList;
+        }
+
+        private void button_change_Click(object sender, EventArgs e)
+        {
+            Modositas modositas = new Modositas();
+
+            if (modositas.ShowDialog() != DialogResult.OK) return;
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            var currentProduct = (Termek)termekBindingSource.Current;
+            var deleteBvin = currentProduct.Bvin;
+
+            var confirmDelete = MessageBox.Show(
+                $"Biztosan törölni szeretnéd a(z) {currentProduct.Nev} nevű terméket?",
+                "Igen",
+                MessageBoxButtons.YesNo);
+
+            if (confirmDelete == DialogResult.Yes)
+            {
+                ApiResponse<bool> productDeleteResponse = proxy.ProductsDelete(deleteBvin);
+
+                if (productDeleteResponse != null)
+                {
+
+                    termekBindingSource.Remove(currentProduct);
+                }
+                else
+                {
+                    MessageBox.Show("A termék törlése sikertelen volt. Próbálja újra.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("A törlés megszakítva.");
+            }
+        }
+
+        private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var current = ((Termek)termekBindingSource.Current).Bvin;
+            textBox_SKU.Text = (from x in termeklista
+                                where x.Bvin == current
+                                select x.SKU).FirstOrDefault();
+            textBox_nev.Text = (from x in termeklista
+                                where x.Bvin == current
+                                select x.Nev).FirstOrDefault();
+            textBox_ar.Text = (from x in termeklista
+                               where x.Bvin == current
+                               select x.Ar).FirstOrDefault().ToString();
+            textBox_mennyiseg.Text = (from x in termeklista
+                                      where x.Bvin == current
+                                      select x.Mennyiseg).FirstOrDefault().ToString();
+            textBox_leiras.Text = (from x in termeklista
+                                   where x.Bvin == current
+                                   select x.Leiras).FirstOrDefault();
+            textBox_tipus.Text = (from x in termeklista
+                                  where x.Bvin == current
+                                  select x.Tipus).FirstOrDefault();
+            textBox_magassag.Text = (from x in termeklista
+                                     where x.Bvin == current
+                                     select x.Magassag).FirstOrDefault().ToString();
+            textBox_szelesseg.Text = (from x in termeklista
+                                      where x.Bvin == current
+                                      select x.Szelesseg).FirstOrDefault().ToString();
+            textBox_hosszusag.Text = (from x in termeklista
+                                      where x.Bvin == current
+                                      select x.Hosszusag).FirstOrDefault().ToString();
+            textBox_suly.Text = (from x in termeklista
+                                 where x.Bvin == current
+                                 select x.Suly).FirstOrDefault().ToString();
+            textBox_gyarto.Text = (from x in termeklista
+                                   where x.Bvin == current
+                                   select x.Gyarto).FirstOrDefault();
+            textBox_elado.Text = (from x in termeklista
+                                  where x.Bvin == current
+                                  select x.Elado).FirstOrDefault();
+            textBox_szallitasiMod.Text = (from x in termeklista
+                                          where x.Bvin == current
+                                          select x.SzallitasiMod).FirstOrDefault();
+            textBox_nemSzallithato.Text = (from x in termeklista
+                                           where x.Bvin == current
+                                           select x.NemSzallithato).FirstOrDefault().ToString();
+            textBox_kulonSzallithato.Text = (from x in termeklista
+                                             where x.Bvin == current
+                                             select x.KulonSzallihato).FirstOrDefault().ToString();
+            textBox_szallitasiKoltseg.Text = (from x in termeklista
+                                              where x.Bvin == current
+                                              select x.SzallitasiAr).FirstOrDefault().ToString();
+            textBox_velemenyek.Text = (from x in termeklista
+                                       where x.Bvin == current
+                                       select x.Velemenyek).FirstOrDefault().ToString();
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.Black);
+            e.Graphics.DrawLine(pen, 0, 10, 300, 10);
         }
     }
 }
