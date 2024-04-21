@@ -30,12 +30,10 @@ namespace Kliensalkalmazas
         {
             InitializeComponent();
 
-            ApiResponse<List<ProductDTO>> productsData = proxy.ProductsFindAll();
+            var productsData = proxy.ProductsFindAll();
 
             for (int i = 0; i < productsData.Content.Count; i++)
-            {
-                //var productInventory = proxy.ProductInventoryFindForProduct(productsData.Content[i].Bvin);
-                
+            {                
                 Termek termek = new Termek();
                 termek.ID = i + 1;
                 termek.InventoryID = productsData.Content[i].Bvin;
@@ -60,7 +58,7 @@ namespace Kliensalkalmazas
                 termeklista.Add(termek);
             }
 
-            termekBindingSource.DataSource = termeklista;
+            dataGridView_raktar.DataSource = termeklista;
 
             /*for (int i = 0; i < snaps.Content.Count; i++)
             {

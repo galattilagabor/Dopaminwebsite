@@ -8,24 +8,24 @@ namespace ApiSample
 {
     internal class Termek
     {
-        public int ID;
-        public string InventoryID;
-        public string SKU;
-        public string Nev;
-        public decimal Ar;
-        public int Mennyiseg;
-        public string Leiras;
-        public string Tipus;
-        public double Magassag;
-        public double Szelesseg;
-        public double Hosszusag;
-        public double Suly;
-        public string Gyarto;
-        public string Elado;
-        public string SzallitasiMod;
-        public bool NemSzallithato;
-        public bool KulonSzallihato;
-        public double SzallitasiAr;
-        public bool? Velemenyek;
+        public int ID { get; set; }
+        public string InventoryID { get; set; }
+        public string SKU { get; set; }
+        public string Nev { get; set; }
+        public decimal Ar { get; set; }
+        public int Mennyiseg { get; set; }
+        public string Leiras { get; set; }
+        public string Tipus { get; set; }
+        public double Magassag { get; set; }
+        public double Szelesseg { get; set; }
+        public double Hosszusag { get; set; }
+        public double Suly { get; set; }
+        public string Gyarto { get; set; }
+        public string Elado { get; set; }
+        public string SzallitasiMod { get; set; }
+        public bool NemSzallithato { get; set; }
+        public bool KulonSzallihato { get; set; }
+        public double SzallitasiAr { get; set; }
+        public bool? Velemenyek { get; set; }
     }
 }

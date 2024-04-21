@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textBox_kereses = new System.Windows.Forms.TextBox();
             this.button_plus = new System.Windows.Forms.Button();
             this.button_minus = new System.Windows.Forms.Button();
             this.button_save = new System.Windows.Forms.Button();
             this.dataGridView_raktar = new System.Windows.Forms.DataGridView();
-            this.termekBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -72,7 +70,6 @@
             this.textBox_szallitasiKoltseg = new System.Windows.Forms.TextBox();
             this.textBox_velemenyek = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.termekBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,17 +109,11 @@
             // 
             // dataGridView_raktar
             // 
-            this.dataGridView_raktar.AutoGenerateColumns = false;
             this.dataGridView_raktar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_raktar.DataSource = this.termekBindingSource;
             this.dataGridView_raktar.Location = new System.Drawing.Point(356, 97);
             this.dataGridView_raktar.Name = "dataGridView_raktar";
             this.dataGridView_raktar.Size = new System.Drawing.Size(656, 542);
             this.dataGridView_raktar.TabIndex = 6;
-            // 
-            // termekBindingSource
-            // 
-            this.termekBindingSource.DataSource = typeof(ApiSample.Termek);
             // 
             // label1
             // 
@@ -465,7 +456,6 @@
             this.Name = "Raktar";
             this.Text = "Raktar";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.termekBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -514,6 +504,5 @@
         private System.Windows.Forms.TextBox textBox_kulonSzallithato;
         private System.Windows.Forms.TextBox textBox_szallitasiKoltseg;
         private System.Windows.Forms.TextBox textBox_velemenyek;
-        private System.Windows.Forms.BindingSource termekBindingSource;
     }
 }
