@@ -2,6 +2,8 @@
 using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
+using Hotcakes.CommerceDTO.v1.Contacts;
+using Hotcakes.CommerceDTO.v1.Shipping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,23 +44,32 @@ namespace Kliensalkalmazas
 
             for (int i = 0; i < productsData.Content.Count; i++)
             {
+                var product = productsData.Content[i];
+
+                ProductInventoryDTO productInventoryDTO = new ProductInventoryDTO();
+                ShippableItemDTO shippableItemDTO = new ShippableItemDTO();
+                ApiResponse<List<CategorySnapshotDTO>> categories = proxy.CategoriesFindForProduct(product.Bvin);
+                ApiResponse<VendorManufacturerDTO> vendors = proxy.VendorFind(product.VendorId);
+                ApiResponse<VendorManufacturerDTO> manufactures = proxy.ManufacturerFind(product.ManufacturerId);
+
                 Termek termek = new Termek();
                 termek.ID = i + 1;
-                termek.Bvin = productsData.Content[i].Bvin;
-                termek.SKU = productsData.Content[i].Sku;
-                termek.Nev = productsData.Content[i].ProductName;
-                termek.Ar = productsData.Content[i].SitePrice;
-                termek.Mennyiseg = productsData.Content[i].MinimumQty;
-                //termek.Tipus = response.Content[i];
-                //termek.Magassag = response.Content[i].;
-                //termek.Szelesseg = response.Content[i];
-                //termek.Hosszusag = response.Content[i];
-                //termek.Suly = response.Content[i];
-                termek.Gyarto = productsData.Content[i].ManufacturerId;
-                termek.Elado = productsData.Content[i].VendorId;
-                termek.SzallitasiMod = productsData.Content[i].ShippingMode.ToString();
-                //termek.SzallitasiAr = response.Content[i];
-                //termek.NemSzallithato = response.Content[i];
+                termek.Bvin = product.Bvin;
+                termek.SKU = product.Sku;
+                termek.Nev = product.ProductName;
+                termek.Ar = Math.Round(product.SitePrice);
+                termek.Mennyiseg = productInventoryDTO.QuantityOnHand;
+                termek.Tipus = categories.Content.FirstOrDefault()?.Name ?? "Nincs besorolva";
+                termek.Magassag = shippableItemDTO.Height;
+                termek.Szelesseg = shippableItemDTO.Width;
+                termek.Hosszusag = shippableItemDTO.Length;
+                termek.Suly = shippableItemDTO.Weight;
+                termek.Gyarto = manufactures.Content.DisplayName;
+                termek.Elado = vendors.Content.DisplayName;
+                termek.SzallitasiMod = product.ShippingMode.ToString();
+                termek.SzallitasiAr = shippableItemDTO.ExtraShipFee;
+                termek.NemSzallithato = shippableItemDTO.IsNonShipping;
+                termek.InventoryID = productInventoryDTO.Bvin;
 
                 termeklista.Add(termek);
             }
@@ -106,35 +117,49 @@ namespace Kliensalkalmazas
             var currentProduct = (Termek)termekBindingSource.Current;
             var deleteBvin = currentProduct.Bvin;
 
-            var confirmDelete = MessageBox.Show(
-                $"Biztosan törölni szeretnéd a(z) {currentProduct.Nev} nevű terméket?",
-                "Igen",
-                MessageBoxButtons.YesNo);
+            ProductInventoryDTO productInventoryDTO = new ProductInventoryDTO();
+            var reservedProducts = productInventoryDTO.ProductBvin;
 
-            if (confirmDelete == DialogResult.Yes)
+            if (reservedProducts.Contains(deleteBvin))
             {
-                ApiResponse<bool> productDeleteResponse = proxy.ProductsDelete(deleteBvin);
-
-                if (productDeleteResponse != null)
-                {
-
-                    termekBindingSource.Remove(currentProduct);
-                }
-                else
-                {
-                    MessageBox.Show("A termék törlése sikertelen volt. Próbálja újra.");
-                }
+                MessageBox.Show($"A(z) {currentProduct.Nev} nevű terméket nem lehet törölni!");
             }
             else
             {
-                MessageBox.Show("A törlés megszakítva.");
-            }
+                var confirmDelete = MessageBox.Show(
+                    $"Biztosan törölni szeretnéd a(z) {currentProduct.Nev} nevű terméket?",
+                    "Termék törlése",
+                    MessageBoxButtons.YesNo);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    ApiResponse<bool> productDeleteResponse = proxy.ProductsDelete(deleteBvin);
+
+                    if (productDeleteResponse != null)
+                    {
+
+                        termekBindingSource.Remove(currentProduct);
+                        MessageBox.Show($"A(z) {currentProduct.Nev} nevű termék törölve lett!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("A termék törlése sikertelen volt. Próbálja újra.");
+                    }
+                }
+            }            
         }
 
-        private void button_save_Click(object sender, EventArgs e)
+        private void button_out_Click(object sender, EventArgs e)
         {
-            // mentés hiányzik
-            MessageBox.Show("Sikeres mentés!");
+            var result = MessageBox.Show(
+                            "Biztosan ki szeretnél lépni?",
+                            "Kilépés",
+                            MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)

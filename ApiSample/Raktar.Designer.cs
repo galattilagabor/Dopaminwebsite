@@ -32,7 +32,7 @@
             this.textBox_kereses = new System.Windows.Forms.TextBox();
             this.button_change = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
-            this.button_save = new System.Windows.Forms.Button();
+            this.button_out = new System.Windows.Forms.Button();
             this.dataGridView_raktar = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bvinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +40,6 @@
             this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mennyisegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leirasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.magassagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szelessegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +49,7 @@
             this.eladoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szallitasiModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nemSzallithatoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.kulonSzallihatoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.szallitasiArDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.velemenyekDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.termekBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -117,15 +114,15 @@
             this.button_delete.UseVisualStyleBackColor = true;
             this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
-            // button_save
+            // button_out
             // 
-            this.button_save.Location = new System.Drawing.Point(937, 42);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(75, 23);
-            this.button_save.TabIndex = 5;
-            this.button_save.Text = "Mentés";
-            this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_out.Location = new System.Drawing.Point(937, 42);
+            this.button_out.Name = "button_out";
+            this.button_out.Size = new System.Drawing.Size(75, 23);
+            this.button_out.TabIndex = 5;
+            this.button_out.Text = "Kilépés";
+            this.button_out.UseVisualStyleBackColor = true;
+            this.button_out.Click += new System.EventHandler(this.button_out_Click);
             // 
             // dataGridView_raktar
             // 
@@ -138,7 +135,6 @@
             this.nevDataGridViewTextBoxColumn,
             this.arDataGridViewTextBoxColumn,
             this.mennyisegDataGridViewTextBoxColumn,
-            this.leirasDataGridViewTextBoxColumn,
             this.tipusDataGridViewTextBoxColumn,
             this.magassagDataGridViewTextBoxColumn,
             this.szelessegDataGridViewTextBoxColumn,
@@ -148,9 +144,7 @@
             this.eladoDataGridViewTextBoxColumn,
             this.szallitasiModDataGridViewTextBoxColumn,
             this.nemSzallithatoDataGridViewCheckBoxColumn,
-            this.kulonSzallihatoDataGridViewCheckBoxColumn,
-            this.szallitasiArDataGridViewTextBoxColumn,
-            this.velemenyekDataGridViewTextBoxColumn});
+            this.szallitasiArDataGridViewTextBoxColumn});
             this.dataGridView_raktar.DataSource = this.termekBindingSource;
             this.dataGridView_raktar.Location = new System.Drawing.Point(356, 97);
             this.dataGridView_raktar.Name = "dataGridView_raktar";
@@ -197,13 +191,6 @@
             this.mennyisegDataGridViewTextBoxColumn.DataPropertyName = "Mennyiseg";
             this.mennyisegDataGridViewTextBoxColumn.HeaderText = "Mennyiseg";
             this.mennyisegDataGridViewTextBoxColumn.Name = "mennyisegDataGridViewTextBoxColumn";
-            // 
-            // leirasDataGridViewTextBoxColumn
-            // 
-            this.leirasDataGridViewTextBoxColumn.DataPropertyName = "Leiras";
-            this.leirasDataGridViewTextBoxColumn.HeaderText = "Leiras";
-            this.leirasDataGridViewTextBoxColumn.Name = "leirasDataGridViewTextBoxColumn";
-            this.leirasDataGridViewTextBoxColumn.Visible = false;
             // 
             // tipusDataGridViewTextBoxColumn
             // 
@@ -268,26 +255,12 @@
             this.nemSzallithatoDataGridViewCheckBoxColumn.Name = "nemSzallithatoDataGridViewCheckBoxColumn";
             this.nemSzallithatoDataGridViewCheckBoxColumn.Visible = false;
             // 
-            // kulonSzallihatoDataGridViewCheckBoxColumn
-            // 
-            this.kulonSzallihatoDataGridViewCheckBoxColumn.DataPropertyName = "KulonSzallihato";
-            this.kulonSzallihatoDataGridViewCheckBoxColumn.HeaderText = "KulonSzallihato";
-            this.kulonSzallihatoDataGridViewCheckBoxColumn.Name = "kulonSzallihatoDataGridViewCheckBoxColumn";
-            this.kulonSzallihatoDataGridViewCheckBoxColumn.Visible = false;
-            // 
             // szallitasiArDataGridViewTextBoxColumn
             // 
             this.szallitasiArDataGridViewTextBoxColumn.DataPropertyName = "SzallitasiAr";
             this.szallitasiArDataGridViewTextBoxColumn.HeaderText = "SzallitasiAr";
             this.szallitasiArDataGridViewTextBoxColumn.Name = "szallitasiArDataGridViewTextBoxColumn";
             this.szallitasiArDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // velemenyekDataGridViewTextBoxColumn
-            // 
-            this.velemenyekDataGridViewTextBoxColumn.DataPropertyName = "Velemenyek";
-            this.velemenyekDataGridViewTextBoxColumn.HeaderText = "Velemenyek";
-            this.velemenyekDataGridViewTextBoxColumn.Name = "velemenyekDataGridViewTextBoxColumn";
-            this.velemenyekDataGridViewTextBoxColumn.Visible = false;
             // 
             // termekBindingSource
             // 
@@ -334,9 +307,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(30, 310);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 13);
+            this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Termék típus";
+            this.label6.Text = "Termék kategória";
             // 
             // label7
             // 
@@ -423,10 +396,10 @@
             // 
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label18.Location = new System.Drawing.Point(130, 148);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(113, 15);
+            this.label18.Size = new System.Drawing.Size(97, 13);
             this.label18.TabIndex = 24;
             this.label18.Text = "Termékinformációk";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -574,7 +547,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView_raktar);
-            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button_out);
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_change);
             this.Controls.Add(this.textBox_kereses);
@@ -592,7 +565,7 @@
         private System.Windows.Forms.TextBox textBox_kereses;
         private System.Windows.Forms.Button button_change;
         private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.Button button_out;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
