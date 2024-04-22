@@ -46,7 +46,8 @@ namespace Kliensalkalmazas
             {
                 var product = productsData.Content[i];
 
-                ProductInventoryDTO productInventoryDTO = new ProductInventoryDTO();
+                ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(product.Bvin);
+                var inventory = productInventory.Content.FirstOrDefault();
                 ShippableItemDTO shippableItemDTO = new ShippableItemDTO();
                 ApiResponse<List<CategorySnapshotDTO>> categories = proxy.CategoriesFindForProduct(product.Bvin);
                 ApiResponse<VendorManufacturerDTO> vendors = proxy.VendorFind(product.VendorId);
@@ -58,7 +59,7 @@ namespace Kliensalkalmazas
                 termek.SKU = product.Sku;
                 termek.Nev = product.ProductName;
                 termek.Ar = Math.Round(product.SitePrice);
-                termek.Mennyiseg = productInventoryDTO.QuantityOnHand;
+                termek.Mennyiseg = int.Parse(inventory != null ? inventory.QuantityOnHand.ToString() : "0");
                 termek.Tipus = categories.Content.FirstOrDefault()?.Name ?? "Nincs besorolva";
                 termek.Magassag = shippableItemDTO.Height;
                 termek.Szelesseg = shippableItemDTO.Width;
@@ -69,7 +70,7 @@ namespace Kliensalkalmazas
                 termek.SzallitasiMod = product.ShippingMode.ToString();
                 termek.SzallitasiAr = shippableItemDTO.ExtraShipFee;
                 termek.NemSzallithato = shippableItemDTO.IsNonShipping;
-                termek.InventoryID = productInventoryDTO.Bvin;
+                termek.InventoryID = productInventory.Content[0].Bvin;
 
                 termeklista.Add(termek);
             }
@@ -87,13 +88,13 @@ namespace Kliensalkalmazas
             termekBindingSource.DataSource = filteredList;
         }
 
-        private void button_change_Click(object sender, EventArgs e)
+        private void button_change_quantity_Click(object sender, EventArgs e)
         {
             var currentProduct = (Termek)termekBindingSource.Current;
             var Bvin = currentProduct.Bvin;
             var updatedProduct = proxy.ProductsFind(Bvin).Content;
 
-            Modositas modositas = new Modositas();
+            MennyisegSzerkesztes modositas = new MennyisegSzerkesztes();
             modositas.textBox_mennyiseg.Text = (from x in termeklista
                                                 where x.Bvin == Bvin
                                                 select x.Mennyiseg).FirstOrDefault().ToString();

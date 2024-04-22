@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ApiSample
 {
-    public partial class Modositas : Form
+    public partial class MennyisegSzerkesztes : Form
     {
-        public Modositas()
+        public MennyisegSzerkesztes()
         {
             InitializeComponent();
           

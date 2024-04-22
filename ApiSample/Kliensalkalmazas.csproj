@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modositas.cs">
+    <Compile Include="MennyisegSzerkesztes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modositas.Designer.cs">
-      <DependentUpon>Modositas.cs</DependentUpon>
+    <Compile Include="MennyisegSzerkesztes.Designer.cs">
+      <DependentUpon>MennyisegSzerkesztes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,8 +69,8 @@
     <Content Include="ApiSample.htm" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Modositas.resx">
-      <DependentUpon>Modositas.cs</DependentUpon>
+    <EmbeddedResource Include="MennyisegSzerkesztes.resx">
+      <DependentUpon>MennyisegSzerkesztes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Raktar.resx">
       <DependentUpon>Raktar.cs</DependentUpon>

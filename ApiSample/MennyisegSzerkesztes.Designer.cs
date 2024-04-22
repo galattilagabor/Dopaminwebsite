@@ -1,6 +1,6 @@
 ﻿namespace ApiSample
 {
-    partial class Modositas
+    partial class MennyisegSzerkesztes
     {
         /// <summary>
         /// Required designer variable.
@@ -104,7 +104,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // Modositas
+            // MennyisegSzerkesztes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,7 +116,7 @@
             this.Controls.Add(this.button_minus);
             this.Controls.Add(this.button_plus);
             this.Controls.Add(this.label1);
-            this.Name = "Modositas";
+            this.Name = "MennyisegSzerkesztes";
             this.Text = "Modositas";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

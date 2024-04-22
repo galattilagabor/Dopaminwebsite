@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBox_kereses = new System.Windows.Forms.TextBox();
-            this.button_change = new System.Windows.Forms.Button();
+            this.button_change_quantity = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_out = new System.Windows.Forms.Button();
             this.dataGridView_raktar = new System.Windows.Forms.DataGridView();
@@ -94,15 +94,15 @@
             this.textBox_kereses.TabIndex = 1;
             this.textBox_kereses.TextChanged += new System.EventHandler(this.textBox_kereses_TextChanged);
             // 
-            // button_change
+            // button_change_quantity
             // 
-            this.button_change.Location = new System.Drawing.Point(551, 42);
-            this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(75, 23);
-            this.button_change.TabIndex = 3;
-            this.button_change.Text = "Módosítas";
-            this.button_change.UseVisualStyleBackColor = true;
-            this.button_change.Click += new System.EventHandler(this.button_change_Click);
+            this.button_change_quantity.Location = new System.Drawing.Point(477, 42);
+            this.button_change_quantity.Name = "button_change_quantity";
+            this.button_change_quantity.Size = new System.Drawing.Size(149, 23);
+            this.button_change_quantity.TabIndex = 3;
+            this.button_change_quantity.Text = "Mennyiség szerkesztése";
+            this.button_change_quantity.UseVisualStyleBackColor = true;
+            this.button_change_quantity.Click += new System.EventHandler(this.button_change_quantity_Click);
             // 
             // button_delete
             // 
@@ -549,7 +549,7 @@
             this.Controls.Add(this.dataGridView_raktar);
             this.Controls.Add(this.button_out);
             this.Controls.Add(this.button_delete);
-            this.Controls.Add(this.button_change);
+            this.Controls.Add(this.button_change_quantity);
             this.Controls.Add(this.textBox_kereses);
             this.Name = "Raktar";
             this.Text = "Raktar";
@@ -563,7 +563,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox textBox_kereses;
-        private System.Windows.Forms.Button button_change;
+        private System.Windows.Forms.Button button_change_quantity;
         private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Button button_out;
         private System.Windows.Forms.Label label1;
