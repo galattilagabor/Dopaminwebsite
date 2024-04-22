@@ -49,7 +49,6 @@ namespace Kliensalkalmazas
                 termek.Nev = productsData.Content[i].ProductName;
                 termek.Ar = productsData.Content[i].SitePrice;
                 termek.Mennyiseg = productsData.Content[i].MinimumQty;
-                termek.Leiras = productsData.Content[i].LongDescription;
                 //termek.Tipus = response.Content[i];
                 //termek.Magassag = response.Content[i].;
                 //termek.Szelesseg = response.Content[i];
@@ -58,10 +57,8 @@ namespace Kliensalkalmazas
                 termek.Gyarto = productsData.Content[i].ManufacturerId;
                 termek.Elado = productsData.Content[i].VendorId;
                 termek.SzallitasiMod = productsData.Content[i].ShippingMode.ToString();
-                //termek.NemSzallithato = response.Content[i];
-                //termek.KulonSzallihato = response.Content[i];
                 //termek.SzallitasiAr = response.Content[i];
-                termek.Velemenyek = productsData.Content[i].AllowReviews;
+                //termek.NemSzallithato = response.Content[i];
 
                 termeklista.Add(termek);
             }
@@ -155,9 +152,6 @@ namespace Kliensalkalmazas
             textBox_mennyiseg.Text = (from x in termeklista
                                       where x.Bvin == current
                                       select x.Mennyiseg).FirstOrDefault().ToString();
-            textBox_leiras.Text = (from x in termeklista
-                                   where x.Bvin == current
-                                   select x.Leiras).FirstOrDefault();
             textBox_tipus.Text = (from x in termeklista
                                   where x.Bvin == current
                                   select x.Tipus).FirstOrDefault();
@@ -182,18 +176,12 @@ namespace Kliensalkalmazas
             textBox_szallitasiMod.Text = (from x in termeklista
                                           where x.Bvin == current
                                           select x.SzallitasiMod).FirstOrDefault();
-            textBox_nemSzallithato.Text = (from x in termeklista
-                                           where x.Bvin == current
-                                           select x.NemSzallithato).FirstOrDefault().ToString();
-            textBox_kulonSzallithato.Text = (from x in termeklista
-                                             where x.Bvin == current
-                                             select x.KulonSzallihato).FirstOrDefault().ToString();
             textBox_szallitasiKoltseg.Text = (from x in termeklista
                                               where x.Bvin == current
                                               select x.SzallitasiAr).FirstOrDefault().ToString();
-            textBox_velemenyek.Text = (from x in termeklista
-                                       where x.Bvin == current
-                                       select x.Velemenyek).FirstOrDefault().ToString();
+            textBox_nemSzallithato.Text = (from x in termeklista
+                                           where x.Bvin == current
+                                           select x.NemSzallithato).FirstOrDefault().ToString();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
