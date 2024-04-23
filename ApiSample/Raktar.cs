@@ -118,10 +118,10 @@ namespace Kliensalkalmazas
             var currentProduct = (Termek)termekBindingSource.Current;
             var deleteBvin = currentProduct.Bvin;
 
-            ProductInventoryDTO productInventoryDTO = new ProductInventoryDTO();
-            var reservedProducts = productInventoryDTO.ProductBvin;
+            ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(currentProduct.Bvin);
+            var inventory = productInventory.Content.FirstOrDefault();
 
-            if (reservedProducts.Contains(deleteBvin))
+            if (inventory.QuantityReserved != 0)
             {
                 MessageBox.Show($"A(z) {currentProduct.Nev} nevű terméket nem lehet törölni!");
             }
