@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApiSample
 {
-    internal class Termek
+    internal class Termék
     {
         public int ID { get; set; }
         public string Bvin { get; set; }

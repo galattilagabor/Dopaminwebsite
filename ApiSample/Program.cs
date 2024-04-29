@@ -39,7 +39,7 @@ namespace Kliensalkalmazas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Raktar());
+            Application.Run(new Raktár());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Kliensalkalmazas
 {
-    partial class Raktar
+    partial class Raktár
     {
         /// <summary>
         /// Required designer variable.
@@ -264,7 +264,7 @@
             // 
             // termekBindingSource
             // 
-            this.termekBindingSource.DataSource = typeof(ApiSample.Termek);
+            this.termekBindingSource.DataSource = typeof(ApiSample.Termék);
             // 
             // label1
             // 

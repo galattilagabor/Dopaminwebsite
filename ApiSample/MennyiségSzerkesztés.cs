@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ApiSample
 {
-    public partial class MennyisegSzerkesztes : Form
+    public partial class MennyiségSzerkesztés : Form
     {
-        public MennyisegSzerkesztes()
+        public MennyiségSzerkesztés()
         {
             InitializeComponent();
           

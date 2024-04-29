@@ -20,16 +20,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Kliensalkalmazas
 {
-    public partial class Raktar : Form
+    public partial class Raktár : Form
     {
         static string url = "http://20.234.113.211:8104/";
         static string key = "1-41509684-cb1e-4c19-a11a-e930a10ec7a6";
 
         Api proxy = new Api(url, key);
 
-        List<Termek> termeklista = new List<Termek>();
+        List<Termék> termeklista = new List<Termék>();
 
-        public Raktar()
+        public Raktár()
         {
             InitializeComponent();
 
@@ -53,7 +53,7 @@ namespace Kliensalkalmazas
                 ApiResponse<VendorManufacturerDTO> vendors = proxy.VendorFind(product.VendorId);
                 ApiResponse<VendorManufacturerDTO> manufactures = proxy.ManufacturerFind(product.ManufacturerId);
 
-                Termek termek = new Termek();
+                Termék termek = new Termék();
                 termek.ID = i + 1;
                 termek.Bvin = product.Bvin;
                 termek.SKU = product.Sku;
@@ -90,13 +90,13 @@ namespace Kliensalkalmazas
 
         private void button_change_quantity_Click(object sender, EventArgs e)
         {
-            var currentProduct = (Termek)termekBindingSource.Current;
+            var currentProduct = (Termék)termekBindingSource.Current;
             var Bvin = currentProduct.Bvin;
 
             ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(Bvin);
             var inventory = productInventory.Content.FirstOrDefault();
 
-            MennyisegSzerkesztes modositas = new MennyisegSzerkesztes();
+            MennyiségSzerkesztés modositas = new MennyiségSzerkesztés();
             modositas.textBox_mennyiseg.Text = (from x in termeklista
                                                 where x.Bvin == Bvin
                                                 select x.Mennyiseg).FirstOrDefault().ToString();
@@ -117,7 +117,7 @@ namespace Kliensalkalmazas
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            var currentProduct = (Termek)termekBindingSource.Current;
+            var currentProduct = (Termék)termekBindingSource.Current;
             var deleteBvin = currentProduct.Bvin;
 
             ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(currentProduct.Bvin);
@@ -167,7 +167,7 @@ namespace Kliensalkalmazas
 
         private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var current = ((Termek)termekBindingSource.Current).Bvin;
+            var current = ((Termék)termekBindingSource.Current).Bvin;
             textBox_SKU.Text = (from x in termeklista
                                 where x.Bvin == current
                                 select x.SKU).FirstOrDefault();

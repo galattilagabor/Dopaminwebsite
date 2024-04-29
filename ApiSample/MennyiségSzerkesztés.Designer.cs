@@ -1,6 +1,6 @@
 ﻿namespace ApiSample
 {
-    partial class MennyisegSzerkesztes
+    partial class MennyiségSzerkesztés
     {
         /// <summary>
         /// Required designer variable.
