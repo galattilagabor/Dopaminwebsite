@@ -48,7 +48,7 @@ namespace Kliensalkalmazas
 
                 ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(product.Bvin);
                 var inventory = productInventory.Content.FirstOrDefault();
-                ShippableItemDTO shippableItemDTO = new ShippableItemDTO();
+
                 ApiResponse<List<CategorySnapshotDTO>> categories = proxy.CategoriesFindForProduct(product.Bvin);
                 ApiResponse<VendorManufacturerDTO> vendors = proxy.VendorFind(product.VendorId);
                 ApiResponse<VendorManufacturerDTO> manufactures = proxy.ManufacturerFind(product.ManufacturerId);
@@ -61,21 +61,21 @@ namespace Kliensalkalmazas
                 termek.Ar = Math.Round(product.SitePrice);
                 termek.Mennyiseg = int.Parse(inventory != null ? inventory.QuantityOnHand.ToString() : "0");
                 termek.Tipus = categories.Content.FirstOrDefault()?.Name ?? "Nincs besorolva";
-                termek.Magassag = shippableItemDTO.Height;
-                termek.Szelesseg = shippableItemDTO.Width;
-                termek.Hosszusag = shippableItemDTO.Length;
-                termek.Suly = shippableItemDTO.Weight;
+                termek.Magassag = Math.Round(product.ShippingDetails.Height);
+                termek.Szelesseg = Math.Round(product.ShippingDetails.Width);
+                termek.Hosszusag = Math.Round(product.ShippingDetails.Length);
+                termek.Suly = Math.Round(product.ShippingDetails.Weight);
                 termek.Gyarto = manufactures.Content.DisplayName;
                 termek.Elado = vendors.Content.DisplayName;
                 termek.SzallitasiMod = product.ShippingMode.ToString();
-                termek.SzallitasiAr = shippableItemDTO.ExtraShipFee;
-                termek.NemSzallithato = shippableItemDTO.IsNonShipping;
+                termek.SzallitasiAr = Math.Round(product.ShippingDetails.ExtraShipFee);
+                termek.NemSzallithato = product.ShippingDetails.IsNonShipping;
                 termek.InventoryID = productInventory.Content[0].Bvin;
 
                 termeklista.Add(termek);
             }
 
-            termekBindingSource.DataSource = termeklista;
+            termékBindingSource.DataSource = termeklista;
         }
 
         private void textBox_kereses_TextChanged(object sender, EventArgs e)
@@ -85,29 +85,71 @@ namespace Kliensalkalmazas
             var filteredList = termeklista
                 .Where(x => x.Nev.ToLower().Contains(search)).ToList();
 
-            termekBindingSource.DataSource = filteredList;
+            termékBindingSource.DataSource = filteredList;
         }
 
         private void button_change_quantity_Click(object sender, EventArgs e)
         {
-            var currentProduct = (Termék)termekBindingSource.Current;
+            var currentProduct = (Termék)termékBindingSource.Current;
             var Bvin = currentProduct.Bvin;
 
             ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(Bvin);
             var inventory = productInventory.Content.FirstOrDefault();
 
-            MennyiségSzerkesztés modositas = new MennyiségSzerkesztés();
-            modositas.textBox_mennyiseg.Text = (from x in termeklista
+            MennyiségSzerkesztés szerkesztés = new MennyiségSzerkesztés();
+            szerkesztés.textBox_mennyiseg.Text = (from x in termeklista
                                                 where x.Bvin == Bvin
                                                 select x.Mennyiseg).FirstOrDefault().ToString();
 
-            if (modositas.ShowDialog() == DialogResult.OK)
+            if (szerkesztés.ShowDialog() == DialogResult.OK)
             {
-                currentProduct.Mennyiseg = int.Parse(modositas.textBox_mennyiseg.Text);
-                inventory.QuantityOnHand = int.Parse(modositas.textBox_mennyiseg.Text);
+                textBox_mennyiseg.Text = szerkesztés.textBox_mennyiseg.Text;
+                currentProduct.Mennyiseg = int.Parse(szerkesztés.textBox_mennyiseg.Text);
+                inventory.QuantityOnHand = int.Parse(szerkesztés.textBox_mennyiseg.Text);
                 ApiResponse<ProductInventoryDTO> response = proxy.ProductInventoryUpdate(inventory);
 
-                termekBindingSource.ResetBindings(false);
+                termékBindingSource.ResetBindings(false);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void button_change_Click(object sender, EventArgs e)
+        {
+            var currentProduct = (Termék)termékBindingSource.Current;
+            var Bvin = currentProduct.Bvin;
+
+            var product = proxy.ProductsFind(Bvin).Content;
+
+            Módosítás módosítás = new Módosítás();
+            módosítás.textBox_SKU.Text = currentProduct.SKU;
+            módosítás.textBox_nev.Text = currentProduct.Nev;
+            módosítás.textBox_ar.Text = currentProduct.Ar.ToString();
+            módosítás.textBox_tipus.Text = currentProduct.Tipus;
+            módosítás.textBox_magassag.Text = currentProduct.Magassag.ToString();
+            módosítás.textBox_szelesseg.Text = currentProduct.Szelesseg.ToString();
+            módosítás.textBox_hosszusag.Text = currentProduct.Hosszusag.ToString();
+            módosítás.textBox_suly.Text = currentProduct.Suly.ToString();
+            módosítás.textBox_gyarto.Text = currentProduct.Gyarto;
+            módosítás.textBox_elado.Text = currentProduct.Elado;
+            módosítás.textBox_szallitasiMod.Text = currentProduct.SzallitasiMod;
+            módosítás.textBox_szallitasiKoltseg.Text = currentProduct.SzallitasiAr.ToString();
+            módosítás.textBox_nemSzallithato.Text = currentProduct.NemSzallithato.ToString();
+
+            if (módosítás.ShowDialog() == DialogResult.OK)
+            {
+                textBox_nev.Text = módosítás.textBox_nev.Text;
+                textBox_ar.Text = módosítás.textBox_ar.Text;
+                currentProduct.Nev = módosítás.textBox_nev.Text;
+                currentProduct.Ar = int.Parse(módosítás.textBox_ar.Text);
+                product.ProductName = módosítás.textBox_nev.Text;
+                product.SitePrice = int.Parse(módosítás.textBox_ar.Text);
+
+                ApiResponse<ProductDTO> response = proxy.ProductsUpdate(product);
+
+                termékBindingSource.ResetBindings(false);
             }
             else
             {
@@ -117,7 +159,7 @@ namespace Kliensalkalmazas
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            var currentProduct = (Termék)termekBindingSource.Current;
+            var currentProduct = (Termék)termékBindingSource.Current;
             var deleteBvin = currentProduct.Bvin;
 
             ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(currentProduct.Bvin);
@@ -125,7 +167,7 @@ namespace Kliensalkalmazas
 
             if (inventory.QuantityReserved != 0)
             {
-                MessageBox.Show($"A(z) {currentProduct.Nev} nevű terméket nem lehet törölni!");
+                MessageBox.Show($"A(z) {currentProduct.Nev} nevű terméket nem lehet törölni, mivel le van foglalva!");
             }
             else
             {
@@ -141,7 +183,7 @@ namespace Kliensalkalmazas
                     if (productDeleteResponse != null)
                     {
 
-                        termekBindingSource.Remove(currentProduct);
+                        termékBindingSource.Remove(currentProduct);
                         MessageBox.Show($"A(z) {currentProduct.Nev} nevű termék törölve lett!");
                     }
                     else
@@ -167,7 +209,7 @@ namespace Kliensalkalmazas
 
         private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var current = ((Termék)termekBindingSource.Current).Bvin;
+            var current = ((Termék)termékBindingSource.Current).Bvin;
             textBox_SKU.Text = (from x in termeklista
                                 where x.Bvin == current
                                 select x.SKU).FirstOrDefault();
@@ -187,11 +229,11 @@ namespace Kliensalkalmazas
                                      where x.Bvin == current
                                      select x.Magassag).FirstOrDefault().ToString();
             textBox_szelesseg.Text = (from x in termeklista
-                                      where x.Bvin == current
-                                      select x.Szelesseg).FirstOrDefault().ToString();
+                                     where x.Bvin == current
+                                     select x.Szelesseg).FirstOrDefault().ToString();
             textBox_hosszusag.Text = (from x in termeklista
-                                      where x.Bvin == current
-                                      select x.Hosszusag).FirstOrDefault().ToString();
+                                     where x.Bvin == current
+                                     select x.Hosszusag).FirstOrDefault().ToString();
             textBox_suly.Text = (from x in termeklista
                                  where x.Bvin == current
                                  select x.Suly).FirstOrDefault().ToString();
