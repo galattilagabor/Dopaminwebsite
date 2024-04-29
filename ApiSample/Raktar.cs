@@ -92,7 +92,9 @@ namespace Kliensalkalmazas
         {
             var currentProduct = (Termek)termekBindingSource.Current;
             var Bvin = currentProduct.Bvin;
-            var updatedProduct = proxy.ProductsFind(Bvin).Content;
+
+            ApiResponse<List<ProductInventoryDTO>> productInventory = proxy.ProductInventoryFindForProduct(Bvin);
+            var inventory = productInventory.Content.FirstOrDefault();
 
             MennyisegSzerkesztes modositas = new MennyisegSzerkesztes();
             modositas.textBox_mennyiseg.Text = (from x in termeklista
@@ -102,8 +104,8 @@ namespace Kliensalkalmazas
             if (modositas.ShowDialog() == DialogResult.OK)
             {
                 currentProduct.Mennyiseg = int.Parse(modositas.textBox_mennyiseg.Text);
-                updatedProduct.MinimumQty = int.Parse(modositas.textBox_mennyiseg.Text);
-                ApiResponse<ProductDTO> updateResponse = proxy.ProductsUpdate(updatedProduct);
+                inventory.QuantityOnHand = int.Parse(modositas.textBox_mennyiseg.Text);
+                ApiResponse<ProductInventoryDTO> response = proxy.ProductInventoryUpdate(inventory);
 
                 termekBindingSource.ResetBindings(false);
             }

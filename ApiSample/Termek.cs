@@ -26,5 +26,6 @@ namespace ApiSample
         public decimal SzallitasiAr { get; set; }
         public bool NemSzallithato { get; set; }
         public string InventoryID { get; set; }
+        public bool IsModified { get; set; } = false;
     }
 }
