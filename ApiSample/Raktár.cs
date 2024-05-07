@@ -40,7 +40,7 @@ namespace Kliensalkalmazas
             Design();
         }
 
-        private void ProductsInventory()
+        public void ProductsInventory()
         {
             ApiResponse<List<ProductDTO>> productsData = proxy.ProductsFindAll();
 
@@ -80,7 +80,7 @@ namespace Kliensalkalmazas
             termékBindingSource.DataSource = termeklista;
         }
 
-        private void textBox_kereses_TextChanged(object sender, EventArgs e)
+        public void textBox_kereses_TextChanged(object sender, EventArgs e)
         {
             string search = textBox_kereses.Text.ToLower();
 
@@ -90,7 +90,7 @@ namespace Kliensalkalmazas
             termékBindingSource.DataSource = filteredList;
         }
 
-        private void button_change_quantity_Click(object sender, EventArgs e)
+        public void button_change_quantity_Click(object sender, EventArgs e)
         {
             var currentProduct = (Termék)termékBindingSource.Current;
             var Bvin = currentProduct.Bvin;
@@ -118,7 +118,7 @@ namespace Kliensalkalmazas
             }
         }
 
-        private void button_change_Click(object sender, EventArgs e)
+        public void button_change_Click(object sender, EventArgs e)
         {
             var currentProduct = (Termék)termékBindingSource.Current;
             var Bvin = currentProduct.Bvin;
@@ -159,7 +159,7 @@ namespace Kliensalkalmazas
             }
         }
 
-        private void button_delete_Click(object sender, EventArgs e)
+        public void button_delete_Click(object sender, EventArgs e)
         {
             var currentProduct = (Termék)termékBindingSource.Current;
             var deleteBvin = currentProduct.Bvin;
@@ -196,7 +196,7 @@ namespace Kliensalkalmazas
             }            
         }
 
-        private void button_out_Click(object sender, EventArgs e)
+        public void button_out_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
                             "Biztosan ki szeretnél lépni?",
@@ -209,7 +209,7 @@ namespace Kliensalkalmazas
             }
         }
 
-        private void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void dataGridView_raktar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var current = ((Termék)termékBindingSource.Current).Bvin;
             textBox_SKU.Text = (from x in termeklista
@@ -256,18 +256,18 @@ namespace Kliensalkalmazas
                                            select x.NemSzallithato).FirstOrDefault().ToString();
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        public void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.White);
             e.Graphics.DrawLine(pen, 0, 10, 300, 10);
         }
 
-        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        public void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
             //pictureBox2.Image = Image.FromFile("C:/Users/user/Desktop/egyetem/negyedik_félév/Rendszerfejlesztés/gyakorlat/Kliensalkalmazas/logó.png");
         }
 
-        private void Design()
+        public void Design()
         {
             this.BackColor = Color.FromArgb(50, 50, 50);
 

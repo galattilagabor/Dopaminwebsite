@@ -34,6 +34,24 @@
             this.button_delete = new System.Windows.Forms.Button();
             this.button_out = new System.Windows.Forms.Button();
             this.dataGridView_raktar = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bvinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mennyisegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gyartoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eladoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.szallitasiModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.szallitasiArDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nemSzallithatoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.inventoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.termékBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,28 +91,10 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bvinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.arDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mennyisegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gyartoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eladoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.szallitasiModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.szallitasiArDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nemSzallithatoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.inventoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.termékBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_kereses
@@ -173,6 +173,127 @@
             this.dataGridView_raktar.Size = new System.Drawing.Size(656, 464);
             this.dataGridView_raktar.TabIndex = 6;
             this.dataGridView_raktar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_raktar_CellClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // bvinDataGridViewTextBoxColumn
+            // 
+            this.bvinDataGridViewTextBoxColumn.DataPropertyName = "Bvin";
+            this.bvinDataGridViewTextBoxColumn.HeaderText = "Bvin";
+            this.bvinDataGridViewTextBoxColumn.Name = "bvinDataGridViewTextBoxColumn";
+            this.bvinDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sKUDataGridViewTextBoxColumn
+            // 
+            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
+            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
+            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
+            this.sKUDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nevDataGridViewTextBoxColumn
+            // 
+            this.nevDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nevDataGridViewTextBoxColumn.DataPropertyName = "Nev";
+            this.nevDataGridViewTextBoxColumn.HeaderText = "Nev";
+            this.nevDataGridViewTextBoxColumn.Name = "nevDataGridViewTextBoxColumn";
+            // 
+            // arDataGridViewTextBoxColumn
+            // 
+            this.arDataGridViewTextBoxColumn.DataPropertyName = "Ar";
+            this.arDataGridViewTextBoxColumn.HeaderText = "Ar";
+            this.arDataGridViewTextBoxColumn.Name = "arDataGridViewTextBoxColumn";
+            this.arDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // mennyisegDataGridViewTextBoxColumn
+            // 
+            this.mennyisegDataGridViewTextBoxColumn.DataPropertyName = "Mennyiseg";
+            this.mennyisegDataGridViewTextBoxColumn.HeaderText = "Mennyiseg";
+            this.mennyisegDataGridViewTextBoxColumn.Name = "mennyisegDataGridViewTextBoxColumn";
+            // 
+            // tipusDataGridViewTextBoxColumn
+            // 
+            this.tipusDataGridViewTextBoxColumn.DataPropertyName = "Tipus";
+            this.tipusDataGridViewTextBoxColumn.HeaderText = "Tipus";
+            this.tipusDataGridViewTextBoxColumn.Name = "tipusDataGridViewTextBoxColumn";
+            this.tipusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Magassag";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Magassag";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Szelesseg";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Szelesseg";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Hosszusag";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Hosszusag";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Suly";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Suly";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // gyartoDataGridViewTextBoxColumn
+            // 
+            this.gyartoDataGridViewTextBoxColumn.DataPropertyName = "Gyarto";
+            this.gyartoDataGridViewTextBoxColumn.HeaderText = "Gyarto";
+            this.gyartoDataGridViewTextBoxColumn.Name = "gyartoDataGridViewTextBoxColumn";
+            this.gyartoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // eladoDataGridViewTextBoxColumn
+            // 
+            this.eladoDataGridViewTextBoxColumn.DataPropertyName = "Elado";
+            this.eladoDataGridViewTextBoxColumn.HeaderText = "Elado";
+            this.eladoDataGridViewTextBoxColumn.Name = "eladoDataGridViewTextBoxColumn";
+            this.eladoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // szallitasiModDataGridViewTextBoxColumn
+            // 
+            this.szallitasiModDataGridViewTextBoxColumn.DataPropertyName = "SzallitasiMod";
+            this.szallitasiModDataGridViewTextBoxColumn.HeaderText = "SzallitasiMod";
+            this.szallitasiModDataGridViewTextBoxColumn.Name = "szallitasiModDataGridViewTextBoxColumn";
+            this.szallitasiModDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // szallitasiArDataGridViewTextBoxColumn
+            // 
+            this.szallitasiArDataGridViewTextBoxColumn.DataPropertyName = "SzallitasiAr";
+            this.szallitasiArDataGridViewTextBoxColumn.HeaderText = "SzallitasiAr";
+            this.szallitasiArDataGridViewTextBoxColumn.Name = "szallitasiArDataGridViewTextBoxColumn";
+            this.szallitasiArDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nemSzallithatoDataGridViewCheckBoxColumn
+            // 
+            this.nemSzallithatoDataGridViewCheckBoxColumn.DataPropertyName = "NemSzallithato";
+            this.nemSzallithatoDataGridViewCheckBoxColumn.HeaderText = "NemSzallithato";
+            this.nemSzallithatoDataGridViewCheckBoxColumn.Name = "nemSzallithatoDataGridViewCheckBoxColumn";
+            this.nemSzallithatoDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // inventoryIDDataGridViewTextBoxColumn
+            // 
+            this.inventoryIDDataGridViewTextBoxColumn.DataPropertyName = "InventoryID";
+            this.inventoryIDDataGridViewTextBoxColumn.HeaderText = "InventoryID";
+            this.inventoryIDDataGridViewTextBoxColumn.Name = "inventoryIDDataGridViewTextBoxColumn";
+            this.inventoryIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // termékBindingSource
+            // 
+            this.termékBindingSource.DataSource = typeof(ApiSample.Termék);
             // 
             // label1
             // 
@@ -545,127 +666,6 @@
             this.label22.TabIndex = 58;
             this.label22.Text = "kg";
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // bvinDataGridViewTextBoxColumn
-            // 
-            this.bvinDataGridViewTextBoxColumn.DataPropertyName = "Bvin";
-            this.bvinDataGridViewTextBoxColumn.HeaderText = "Bvin";
-            this.bvinDataGridViewTextBoxColumn.Name = "bvinDataGridViewTextBoxColumn";
-            this.bvinDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sKUDataGridViewTextBoxColumn
-            // 
-            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
-            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
-            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
-            this.sKUDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nevDataGridViewTextBoxColumn
-            // 
-            this.nevDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nevDataGridViewTextBoxColumn.DataPropertyName = "Nev";
-            this.nevDataGridViewTextBoxColumn.HeaderText = "Nev";
-            this.nevDataGridViewTextBoxColumn.Name = "nevDataGridViewTextBoxColumn";
-            // 
-            // arDataGridViewTextBoxColumn
-            // 
-            this.arDataGridViewTextBoxColumn.DataPropertyName = "Ar";
-            this.arDataGridViewTextBoxColumn.HeaderText = "Ar";
-            this.arDataGridViewTextBoxColumn.Name = "arDataGridViewTextBoxColumn";
-            this.arDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // mennyisegDataGridViewTextBoxColumn
-            // 
-            this.mennyisegDataGridViewTextBoxColumn.DataPropertyName = "Mennyiseg";
-            this.mennyisegDataGridViewTextBoxColumn.HeaderText = "Mennyiseg";
-            this.mennyisegDataGridViewTextBoxColumn.Name = "mennyisegDataGridViewTextBoxColumn";
-            // 
-            // tipusDataGridViewTextBoxColumn
-            // 
-            this.tipusDataGridViewTextBoxColumn.DataPropertyName = "Tipus";
-            this.tipusDataGridViewTextBoxColumn.HeaderText = "Tipus";
-            this.tipusDataGridViewTextBoxColumn.Name = "tipusDataGridViewTextBoxColumn";
-            this.tipusDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Magassag";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Magassag";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Szelesseg";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Szelesseg";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Hosszusag";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Hosszusag";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Suly";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Suly";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // gyartoDataGridViewTextBoxColumn
-            // 
-            this.gyartoDataGridViewTextBoxColumn.DataPropertyName = "Gyarto";
-            this.gyartoDataGridViewTextBoxColumn.HeaderText = "Gyarto";
-            this.gyartoDataGridViewTextBoxColumn.Name = "gyartoDataGridViewTextBoxColumn";
-            this.gyartoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // eladoDataGridViewTextBoxColumn
-            // 
-            this.eladoDataGridViewTextBoxColumn.DataPropertyName = "Elado";
-            this.eladoDataGridViewTextBoxColumn.HeaderText = "Elado";
-            this.eladoDataGridViewTextBoxColumn.Name = "eladoDataGridViewTextBoxColumn";
-            this.eladoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // szallitasiModDataGridViewTextBoxColumn
-            // 
-            this.szallitasiModDataGridViewTextBoxColumn.DataPropertyName = "SzallitasiMod";
-            this.szallitasiModDataGridViewTextBoxColumn.HeaderText = "SzallitasiMod";
-            this.szallitasiModDataGridViewTextBoxColumn.Name = "szallitasiModDataGridViewTextBoxColumn";
-            this.szallitasiModDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // szallitasiArDataGridViewTextBoxColumn
-            // 
-            this.szallitasiArDataGridViewTextBoxColumn.DataPropertyName = "SzallitasiAr";
-            this.szallitasiArDataGridViewTextBoxColumn.HeaderText = "SzallitasiAr";
-            this.szallitasiArDataGridViewTextBoxColumn.Name = "szallitasiArDataGridViewTextBoxColumn";
-            this.szallitasiArDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nemSzallithatoDataGridViewCheckBoxColumn
-            // 
-            this.nemSzallithatoDataGridViewCheckBoxColumn.DataPropertyName = "NemSzallithato";
-            this.nemSzallithatoDataGridViewCheckBoxColumn.HeaderText = "NemSzallithato";
-            this.nemSzallithatoDataGridViewCheckBoxColumn.Name = "nemSzallithatoDataGridViewCheckBoxColumn";
-            this.nemSzallithatoDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // inventoryIDDataGridViewTextBoxColumn
-            // 
-            this.inventoryIDDataGridViewTextBoxColumn.DataPropertyName = "InventoryID";
-            this.inventoryIDDataGridViewTextBoxColumn.HeaderText = "InventoryID";
-            this.inventoryIDDataGridViewTextBoxColumn.Name = "inventoryIDDataGridViewTextBoxColumn";
-            this.inventoryIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // termékBindingSource
-            // 
-            this.termékBindingSource.DataSource = typeof(ApiSample.Termék);
-            // 
             // Raktár
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,19 +720,15 @@
             this.Name = "Raktár";
             this.Text = "Raktar";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox_kereses;
-        private System.Windows.Forms.Button button_change_quantity;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_out;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -745,16 +741,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox_SKU;
-        private System.Windows.Forms.TextBox textBox_nev;
-        private System.Windows.Forms.TextBox textBox_ar;
-        private System.Windows.Forms.TextBox textBox_mennyiseg;
-        private System.Windows.Forms.TextBox textBox_tipus;
-        private System.Windows.Forms.TextBox textBox_gyarto;
-        private System.Windows.Forms.TextBox textBox_elado;
-        private System.Windows.Forms.TextBox textBox_szallitasiMod;
-        private System.Windows.Forms.TextBox textBox_nemSzallithato;
-        private System.Windows.Forms.TextBox textBox_szallitasiKoltseg;
 #pragma warning disable CS0169 // The field 'Raktár.leirasDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn leirasDataGridViewTextBoxColumn;
 #pragma warning restore CS0169 // The field 'Raktár.leirasDataGridViewTextBoxColumn' is never used
@@ -777,15 +763,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn velemenyekDataGridViewTextBoxColumn;
 #pragma warning restore CS0169 // The field 'Raktár.velemenyekDataGridViewTextBoxColumn' is never used
         public System.Windows.Forms.DataGridView dataGridView_raktar;
-        private System.Windows.Forms.Button button_change;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox_magassag;
-        private System.Windows.Forms.TextBox textBox_szelesseg;
-        private System.Windows.Forms.TextBox textBox_hosszusag;
-        private System.Windows.Forms.TextBox textBox_suly;
         private System.Windows.Forms.BindingSource termékBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bvinDataGridViewTextBoxColumn;
@@ -812,5 +793,24 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        public System.Windows.Forms.Button button_change_quantity;
+        public System.Windows.Forms.TextBox textBox_kereses;
+        public System.Windows.Forms.Button button_delete;
+        public System.Windows.Forms.Button button_out;
+        public System.Windows.Forms.TextBox textBox_SKU;
+        public System.Windows.Forms.TextBox textBox_nev;
+        public System.Windows.Forms.TextBox textBox_ar;
+        public System.Windows.Forms.TextBox textBox_mennyiseg;
+        public System.Windows.Forms.TextBox textBox_tipus;
+        public System.Windows.Forms.TextBox textBox_gyarto;
+        public System.Windows.Forms.TextBox textBox_elado;
+        public System.Windows.Forms.TextBox textBox_szallitasiMod;
+        public System.Windows.Forms.TextBox textBox_nemSzallithato;
+        public System.Windows.Forms.TextBox textBox_szallitasiKoltseg;
+        public System.Windows.Forms.Button button_change;
+        public System.Windows.Forms.TextBox textBox_magassag;
+        public System.Windows.Forms.TextBox textBox_szelesseg;
+        public System.Windows.Forms.TextBox textBox_hosszusag;
+        public System.Windows.Forms.TextBox textBox_suly;
     }
 }
