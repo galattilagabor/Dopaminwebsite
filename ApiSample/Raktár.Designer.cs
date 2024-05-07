@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Raktár));
             this.textBox_kereses = new System.Windows.Forms.TextBox();
             this.button_change_quantity = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.textBox_szelesseg = new System.Windows.Forms.TextBox();
             this.textBox_hosszusag = new System.Windows.Forms.TextBox();
             this.textBox_suly = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -73,6 +73,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bvinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,7 +94,6 @@
             this.termékBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -465,16 +465,6 @@
             this.textBox_suly.Size = new System.Drawing.Size(148, 20);
             this.textBox_suly.TabIndex = 50;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(30, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(300, 100);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 51;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -544,6 +534,14 @@
             this.label22.Size = new System.Drawing.Size(19, 13);
             this.label22.TabIndex = 58;
             this.label22.Text = "kg";
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Location = new System.Drawing.Point(102, 10);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 107);
+            this.panel1.TabIndex = 59;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -672,6 +670,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
@@ -679,7 +678,6 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.textBox_suly);
             this.Controls.Add(this.textBox_hosszusag);
             this.Controls.Add(this.textBox_szelesseg);
@@ -721,7 +719,6 @@
             this.Text = "Raktar";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_raktar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.termékBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -804,7 +801,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn szallitasiArDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn nemSzallithatoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inventoryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -812,5 +808,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Panel panel1;
     }
 }

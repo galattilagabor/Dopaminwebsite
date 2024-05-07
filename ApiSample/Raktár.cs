@@ -262,11 +262,6 @@ namespace Kliensalkalmazas
             e.Graphics.DrawLine(pen, 0, 10, 300, 10);
         }
 
-        private void pictureBox2_Paint(object sender, PaintEventArgs e)
-        {
-            //pictureBox2.Image = Image.FromFile("C:/Users/user/Desktop/egyetem/negyedik_félév/Rendszerfejlesztés/gyakorlat/Kliensalkalmazas/logó.png");
-        }
-
         private void Design()
         {
             this.BackColor = Color.FromArgb(50, 50, 50);
