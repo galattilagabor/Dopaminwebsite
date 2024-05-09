@@ -36,7 +36,7 @@ namespace Kliens.test
         [Test]
         public void Test_TextBoxContent_IsString()
         {
-            // Végigmegyünk minden TextBox-en a formon
+            // Végigmegyünk minden TextBox-on a formon
             foreach (Control control in mainForm.Controls)
             {
                 if (control is TextBox textBox)
@@ -44,6 +44,23 @@ namespace Kliens.test
                     // Ellenőrizzük, hogy a TextBox tartalma string
                     Assert.That(textBox.Text, Is.TypeOf<string>());
                 }
+            }
+        }
+        [Test]
+        public void Test_DataGridView_IsVisible()
+        {
+            // Ellenőrizzük, hogy a DataGridView látható-e a fő formon
+            Assert.That(mainForm.dataGridView_raktar.Visible, "A DataGridView nem jelenik meg a formon.");
+        }
+
+        [Test]
+        public void Test_AllButtons_AreVisible()
+        {
+            // Ellenőrizzük, hogy az összes gomb látható-e a fő formon
+            var allButtons = mainForm.Controls.OfType<Button>();
+            foreach (var button in allButtons)
+            {
+                Assert.That(button.Visible, $"A(z) {button.Name} gomb nem jelenik meg a formon.");
             }
         }
     }
