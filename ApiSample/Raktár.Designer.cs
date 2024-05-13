@@ -107,12 +107,13 @@
             // 
             // button_change_quantity
             // 
-            this.button_change_quantity.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.button_change_quantity.ForeColor = System.Drawing.Color.White;
+            this.button_change_quantity.BackColor = System.Drawing.Color.White;
+            this.button_change_quantity.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_change_quantity.Location = new System.Drawing.Point(356, 42);
             this.button_change_quantity.Margin = new System.Windows.Forms.Padding(7);
             this.button_change_quantity.Name = "button_change_quantity";
-            this.button_change_quantity.Size = new System.Drawing.Size(149, 23);
+            this.button_change_quantity.Padding = new System.Windows.Forms.Padding(3);
+            this.button_change_quantity.Size = new System.Drawing.Size(149, 33);
             this.button_change_quantity.TabIndex = 3;
             this.button_change_quantity.Text = "Mennyiség szerkesztése";
             this.button_change_quantity.UseVisualStyleBackColor = false;
@@ -120,12 +121,13 @@
             // 
             // button_delete
             // 
-            this.button_delete.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.button_delete.ForeColor = System.Drawing.Color.White;
+            this.button_delete.BackColor = System.Drawing.Color.White;
+            this.button_delete.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_delete.Location = new System.Drawing.Point(644, 42);
             this.button_delete.Margin = new System.Windows.Forms.Padding(7);
             this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(75, 23);
+            this.button_delete.Padding = new System.Windows.Forms.Padding(3);
+            this.button_delete.Size = new System.Drawing.Size(75, 33);
             this.button_delete.TabIndex = 4;
             this.button_delete.Text = "Törlés";
             this.button_delete.UseVisualStyleBackColor = false;
@@ -133,12 +135,13 @@
             // 
             // button_out
             // 
-            this.button_out.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.button_out.ForeColor = System.Drawing.Color.White;
+            this.button_out.BackColor = System.Drawing.Color.White;
+            this.button_out.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_out.Location = new System.Drawing.Point(937, 42);
             this.button_out.Margin = new System.Windows.Forms.Padding(7);
             this.button_out.Name = "button_out";
-            this.button_out.Size = new System.Drawing.Size(75, 23);
+            this.button_out.Padding = new System.Windows.Forms.Padding(3);
+            this.button_out.Size = new System.Drawing.Size(75, 33);
             this.button_out.TabIndex = 5;
             this.button_out.Text = "Kilépés";
             this.button_out.UseVisualStyleBackColor = false;
@@ -147,6 +150,7 @@
             // dataGridView_raktar
             // 
             this.dataGridView_raktar.AutoGenerateColumns = false;
+            this.dataGridView_raktar.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView_raktar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_raktar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -382,12 +386,13 @@
             // 
             // button_change
             // 
-            this.button_change.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.button_change.ForeColor = System.Drawing.Color.White;
+            this.button_change.BackColor = System.Drawing.Color.White;
+            this.button_change.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_change.Location = new System.Drawing.Point(563, 42);
             this.button_change.Margin = new System.Windows.Forms.Padding(7);
             this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(75, 23);
+            this.button_change.Padding = new System.Windows.Forms.Padding(3);
+            this.button_change.Size = new System.Drawing.Size(75, 33);
             this.button_change.TabIndex = 42;
             this.button_change.Text = "Módosítás";
             this.button_change.UseVisualStyleBackColor = false;

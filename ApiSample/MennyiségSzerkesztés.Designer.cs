@@ -42,7 +42,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(88, 9);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(88, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 0;
@@ -50,26 +51,31 @@
             // 
             // button_plus
             // 
-            this.button_plus.Location = new System.Drawing.Point(199, 81);
+            this.button_plus.BackColor = System.Drawing.Color.White;
+            this.button_plus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.button_plus.Location = new System.Drawing.Point(185, 81);
             this.button_plus.Name = "button_plus";
             this.button_plus.Size = new System.Drawing.Size(50, 50);
             this.button_plus.TabIndex = 1;
             this.button_plus.Text = "+";
-            this.button_plus.UseVisualStyleBackColor = true;
+            this.button_plus.UseVisualStyleBackColor = false;
             this.button_plus.Click += new System.EventHandler(this.button_plus_Click);
             // 
             // button_minus
             // 
-            this.button_minus.Location = new System.Drawing.Point(37, 81);
+            this.button_minus.BackColor = System.Drawing.Color.White;
+            this.button_minus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.button_minus.Location = new System.Drawing.Point(51, 81);
             this.button_minus.Name = "button_minus";
             this.button_minus.Size = new System.Drawing.Size(50, 50);
             this.button_minus.TabIndex = 2;
             this.button_minus.Text = "-";
-            this.button_minus.UseVisualStyleBackColor = true;
+            this.button_minus.UseVisualStyleBackColor = false;
             this.button_minus.Click += new System.EventHandler(this.button_minus_Click);
             // 
             // textBox_mennyiseg
             // 
+            this.textBox_mennyiseg.ForeColor = System.Drawing.Color.White;
             this.textBox_mennyiseg.Location = new System.Drawing.Point(119, 97);
             this.textBox_mennyiseg.Name = "textBox_mennyiseg";
             this.textBox_mennyiseg.Size = new System.Drawing.Size(50, 20);
@@ -77,22 +83,28 @@
             // 
             // button_out
             // 
+            this.button_out.BackColor = System.Drawing.Color.White;
             this.button_out.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_out.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_out.Location = new System.Drawing.Point(174, 176);
             this.button_out.Name = "button_out";
-            this.button_out.Size = new System.Drawing.Size(75, 23);
+            this.button_out.Padding = new System.Windows.Forms.Padding(3);
+            this.button_out.Size = new System.Drawing.Size(75, 33);
             this.button_out.TabIndex = 4;
             this.button_out.Text = "Kilépés";
-            this.button_out.UseVisualStyleBackColor = true;
+            this.button_out.UseVisualStyleBackColor = false;
             // 
             // button_save
             // 
+            this.button_save.BackColor = System.Drawing.Color.White;
+            this.button_save.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button_save.Location = new System.Drawing.Point(37, 176);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(75, 23);
+            this.button_save.Padding = new System.Windows.Forms.Padding(3);
+            this.button_save.Size = new System.Drawing.Size(75, 33);
             this.button_save.TabIndex = 5;
             this.button_save.Text = "Mentés";
-            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.UseVisualStyleBackColor = false;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // pictureBox1
@@ -104,11 +116,12 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // MennyisegSzerkesztes
+            // MennyiségSzerkesztés
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 211);
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ClientSize = new System.Drawing.Size(284, 221);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.button_out);
@@ -116,7 +129,7 @@
             this.Controls.Add(this.button_minus);
             this.Controls.Add(this.button_plus);
             this.Controls.Add(this.label1);
-            this.Name = "MennyisegSzerkesztes";
+            this.Name = "MennyiségSzerkesztés";
             this.Text = "Modositas";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

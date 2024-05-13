@@ -18,6 +18,8 @@ namespace ApiSample
             InitializeComponent();
           
             pictureBox1.Refresh();
+
+            Design();
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -48,8 +50,27 @@ namespace ApiSample
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(Color.White);
             e.Graphics.DrawLine(pen, 0, 10, 500, 10);
+        }
+
+
+        private void Design()
+        {
+            this.BackColor = Color.FromArgb(50, 50, 50);
+
+            button_minus.ForeColor = Color.FromArgb(50, 50, 50);
+            button_minus.BackColor = Color.White;
+            button_plus.ForeColor = Color.FromArgb(50, 50, 50);
+            button_plus.BackColor = Color.White;
+            button_save.ForeColor = Color.FromArgb(50, 50, 50);
+            button_save.BackColor = Color.White;
+            button_out.ForeColor = Color.FromArgb(50, 50, 50);
+            button_out.BackColor =  Color.White;
+
+            textBox_mennyiseg.BackColor = Color.FromArgb(50, 50, 50);
+            textBox_mennyiseg.BorderStyle = BorderStyle.None;
+            textBox_mennyiseg.TextAlign = HorizontalAlignment.Center;
         }
     }
 }
