@@ -33,55 +33,128 @@
 </div>
 
 @{
-    Layout = null;
+    Layout = null; // Ha nem szeretnénk, hogy az oldalunk az alapértelmezett elrendezést használja
 }
 
-<!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Túrák</title>
+    <title>Trekking a hegyekben - Jelentkezés</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
+        #er {
+            width: 40%;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #656839;
+            border-radius: 20px;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
+        h2 {
+            color: white;
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        input, select {
+            background-color: #bec19580;
+            border-radius: 10px;
+            border-style: none;
+            width: 100%;
+            height: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        label {
+            color: white;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #gomb, #gomb1 {
+            color: white;
+            width: 120px;
+            height: 35px;
+        }
+
+        #kontent {
+            align-content: center;
+        }
+
+        .gombok {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #turaselectionContainer, #checkboxContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #checkboxContainer {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        h1 {
-            color: #333;
+        #checkboxLabel {
+            margin-left: 5px;
+            white-space: nowrap;
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+        #checkbox {
+            margin-right: 160px;
         }
-
-            .button:hover {
-                background-color: #45a049;
-            }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Túrák</h1>
-        <p>Üdvözöllek! Kattints a jelentkezés gombra, hogy csatlakozz hozzánk!</p>
-        <a href="jelentkezes.html" class="button">Jelentkezés</a>
+    <div id="er">
+        <h2>Túra Jelentkezés</h2> <br />
+        <div id="kontent">
+            <form method="post" action="submit_form.cshtml">
+                <div id="turaselectionContainer">
+                    <label for="turaselection">Válassz egy túrát:</label>
+                    <select id="turaselection" name="tura">
+                        <option value="A">Trekking a hegyekben</option>
+                        <option value="B">Vadászles/célzógyakorlat</option>
+                        <option value="C">Táborozás/tábortűz készítés</option>
+                    </select>
+                </div>
+
+                <label for="name">Név: </label>
+                <input type="text" id="name" name="name" required><br />
+
+                <label for="birthPlace">Születési hely: </label>
+                <input type="text" id="birthPlace" name="birthPlace" required><br />
+
+                <label for="birthDate">Születési dátum: </label>
+                <input type="date" id="birthDate" name="birthDate" required><br />
+
+                <label for="address">Lakcím: </label>
+                <input type="text" id="address" name="address" required><br />
+
+                <label for="phoneNumber">Telefonszám: </label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{11}" required><br />
+                <br/>
+                <div id="checkboxContainer">
+
+                    <label id="checkboxLabel" for="checkbox">Elfogadod a feltételeket?</label>
+                    <input type="checkbox" id="checkbox" name="accept" required>
+                </div>
+
+                <div class="gombok">
+                    <input id="gomb" type="submit" value="Jelentkezés">
+                    <input id="gomb1" type="button" value="Mégse">
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+
+
 
